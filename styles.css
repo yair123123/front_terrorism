@@ -3,10 +3,20 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #f0f4f7;
+}
+h1 {
+    margin-top: 20px;
+    color: #333;
 }
 #controls {
-    margin: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 select {
     padding: 10px;
@@ -14,6 +24,8 @@ select {
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+    width: 100%;
+    max-width: 400px;
 }
 button {
     padding: 10px 20px;
@@ -22,6 +34,7 @@ button {
     background-color: #007BFF;
     color: white;
     cursor: pointer;
+    font-size: 16px;
 }
 button:hover {
     background-color: #0056b3;
@@ -33,6 +46,7 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
+    background-color: #e9ecef;
 }
 #loading {
     display: none;
@@ -50,32 +64,29 @@ button:hover {
     font-weight: bold;
     margin-bottom: 10px;
 }
-
 .filter-buttons {
     display: flex;
+    justify-content: center;
     gap: 15px;
 }
-
 .filter-button {
     padding: 10px 20px;
     border: 2px solid #4CAF50;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fcf8f8;
+    color: #333;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .filter-button:hover {
     background-color: #4CAF50;
     color: white;
     transform: scale(1.05);
 }
-
 .filter-button:active {
     transform: scale(0.95);
 }
-
 #selected-filter {
     margin-top: 15px;
     font-size: 14px;

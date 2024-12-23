@@ -14,12 +14,19 @@
         <label for="stats">Select Statistic:</label>
         <select id="stats" onchange="by_country_or_region()">
             <option value="">Select...</option>
-            <option value="global">Global Overview</option>
-            <option value="filter">Filter by Country or Region</option>
+            <option value="get_most_deadly">Most deadly</option>
+            <option value="average_casualties">average casualties by area</option>
+            <option value="get_top_5_most_num_spread">top 5 most num spread</option>
+            <option value="get_most_group_active_by_region">most group active by region</option>
+            <option value="get_history_events_by_year">history events by year</option>
+            <option value="get_groups_with_common_goal_by_location">groups with common goal by location</option>
+            <option value="get_both_groups_in_event_by_location">both groups in event by location</option>
+            <option value="get_shared_goals_in_groups_by_year">shared goals in groups by year</option>
+            <option value="get_shared_attack_type_in_groups_by_location">shared attack type in groups by location</option>
         </select>
         <div id="additional-select-container"></div>
         <p id="selected-filter"></p>
-        <button onclick="fetchData()">Load Map</button>
+        <button onclick="fetchData()">Execute</button>
         <div id="loading">Loading map, please wait...</div>
         <div id="error"></div>
     </div>
