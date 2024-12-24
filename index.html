@@ -5,34 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Map Viewer</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 
 </head>
 <body>
     <h1>Dynamic Map Viewer</h1>
     <div id="controls">
         <label for="stats">Select Statistic:</label>
-        <select id="stats" onchange="by_country_or_region()">
-            <option value="">Select...</option>
+        <select id="stats">
             <option value="get_most_deadly">Most deadly</option>
             <option value="average_casualties">average casualties by area</option>
             <option value="get_top_5_most_num_spread">top 5 most num spread</option>
             <option value="get_most_group_active_by_region">most group active by region</option>
             <option value="get_history_events_by_year">history events by year</option>
             <option value="get_groups_with_common_goal_by_location">groups with common goal by location</option>
-            <option value="get_both_groups_in_event_by_location">both groups in event by location</option>
+            <option value="get_unique_groups_by_location">get unique groups by location</option>
             <option value="get_shared_goals_in_groups_by_year">shared goals in groups by year</option>
             <option value="get_shared_attack_type_in_groups_by_location">shared attack type in groups by location</option>
+            <option value="Search_in_text">Search in text</option>
         </select>
-        <div id="additional-select-container"></div>
-        <p id="selected-filter"></p>
-        <button onclick="fetchData()">Execute</button>
+        <div id="input-container">
+            <div id="top-5-container" class="inputs-container">
+                <label for="top-5-radio">Top 5</label>
+                <input type="checkbox" id="top-5-radio">
+            </div>
+            <div id="area-container" class="inputs-container">
+                <select id="area-select">
+                    <option value="country">Country</option>
+                    <option value="region">Region</option>
+                </select>
+            </div>
+            <div id="year-container" class="inputs-container">
+                <input type="number"  id="input-year" placeholder="Year" min="1900">
+            </div>
+        </div>
+        <div id="button-group">
+            <button onclick="fetchData()">Execute</button>
+        </div>
         <div id="loading">Loading map, please wait...</div>
         <div id="error"></div>
     </div>
+    <button onclick="enoshClick()">enosh</button>
     
     
-    <div id="map-container"></div>
+    <div id="map-container" ></div>
+
+    <script src="./enosh.js"></script>
 
   </body>
 </html>

@@ -5,10 +5,12 @@ body {
     text-align: center;
     background-color: #f0f4f7;
 }
+
 h1 {
     margin-top: 20px;
     color: #333;
 }
+
 #controls {
     margin: 20px auto;
     max-width: 600px;
@@ -18,6 +20,7 @@ h1 {
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 select {
     padding: 10px;
     margin: 10px;
@@ -27,6 +30,7 @@ select {
     width: 100%;
     max-width: 400px;
 }
+
 button {
     padding: 10px 20px;
     border-radius: 5px;
@@ -36,10 +40,12 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
+
 button:hover {
     background-color: #0056b3;
 }
-#map-container {
+
+/* #map-container {
     margin: 20px auto;
     width: 80%;
     height: 500px;
@@ -47,28 +53,32 @@ button:hover {
     border-radius: 10px;
     overflow: hidden;
     background-color: #e9ecef;
-}
+} */
 #loading {
     display: none;
     color: #007BFF;
     font-size: 18px;
     margin-top: 10px;
 }
+
 #error {
     color: red;
     font-size: 16px;
     margin-top: 10px;
 }
+
 .filter-label {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .filter-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
+
 .filter-button {
     padding: 10px 20px;
     border: 2px solid #4CAF50;
@@ -79,17 +89,73 @@ button:hover {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .filter-button:hover {
     background-color: #4CAF50;
     color: white;
     transform: scale(1.05);
 }
+
 .filter-button:active {
     transform: scale(0.95);
 }
+
 #selected-filter {
     margin-top: 15px;
     font-size: 14px;
     color: #333;
     font-style: italic;
 }
+
+.inputs-container {
+    display: flex ;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    display: none;   
+}
+
+#top-5-radio {
+    border: 1px solid #000000;
+    padding: 0.5em;
+    -webkit-appearance: none;
+    transition: all 200ms ease-out;
+
+}
+
+#top-5-radio:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#top-5-radio:checked {
+        background-color: #000000;
+        box-shadow:  inset 0px 0px 1px 1px white;
+}
+
+#input-year {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+    width: 70%;
+    transition: background 1s ease-out;
+}
+
+#input-year:focus {
+    border: 1px solid #7a7a7a;
+    background: rgb(230, 229, 229);
+    outline: none;
+}
+
+#input-year:active {
+    border: 1px solid #7a7a7a;
+    outline: none;
+
+}
+
+#button-group {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+

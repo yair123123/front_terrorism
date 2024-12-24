@@ -7,7 +7,7 @@ function by_country_or_region() {
     label.textContent = "Filter by:";
     label.className = "filter-label";
 
-    if (["get_groups_with_common_goal_by_location","get_both_groups_in_event_by_location","get_shared_attack_type_in_groups_by_location"].includes(stat)) {
+    if (["get_groups_with_common_goal_by_location","get_unique_groups_by_location","get_shared_attack_type_in_groups_by_location"].includes(stat)) {
         const container = document.createElement('div');
         container.className = "filter-buttons";
 
@@ -52,6 +52,30 @@ function by_country_or_region() {
         additionalSelectContainer.appendChild(label);
         additionalSelectContainer.appendChild(container);
     }
+    else if (stat === "Search_in_text"){
+        const container = document.createElement('div');
+        container.className = "select";
+        
+        const selectQuery = document.createElement('select');
+        const option1 = document.createElement('option');
+        option1.text = "search from history csv";
+        selectQuery.add(option1);
+        const option2 = document.createElement('option');
+        option2.text = "search from all data";
+        selectQuery.add(option2);
+        const option3 = document.createElement('option');
+        option3.text = "search from news";
+        selectQuery.add(option3);
+        const option4 = document.createElement('option');
+        option4.text = "search from all by dates";
+        selectQuery.add(option4);
+    
+        selectQuery.onchange = () => selectFilter(selectQuery.value);
+    
+        container.appendChild(selectQuery);
+        additionalSelectContainer.appendChild(label);
+        additionalSelectContainer.appendChild(container);
+    }
 }
 
 function selectFilter(type) {
@@ -65,17 +89,14 @@ async function fetchData() {
     const loadingIndicator = document.getElementById('loading');
     const errorElement = document.getElementById('error');
 
-    // נקה הודעות שגיאה או טעינה
     errorElement.textContent = "";
     loadingIndicator.style.display = "none";
 
-    // בדוק אם סטטיסטיקה נבחרה
     if (!stat) {
         errorElement.textContent = "Please select a statistic.";
         return;
     }
 
-    // קבל את הפילטר שנבחר
     const selectedFilterText = selectedFilterElement.textContent;
     const filter = selectedFilterText.replace("Selected filter: ", "").trim();
 
@@ -84,18 +105,15 @@ async function fetchData() {
         return;
     }
 
-    // צור את נתוני הבקשה
     const requestData = {
         statistic: stat,
         filter: filter,
     };
 
-    // הצג הודעת טעינה
     loadingIndicator.style.display = "block";
 
     try {
-        // שלח את הבקשה לשרת
-        const response = await fetch('http://127.0.0.1:5000', {
+        const response = await fetch('http://127.0.0.1:5001', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,29 +121,21 @@ async function fetchData() {
             body: JSON.stringify(requestData),
         });
 
-        // בדוק אם הבקשה הצליחה
         if (!response.ok) {
             throw new Error(`Server error: ${response.statusText}`);
         }
 
-        // עבד את התשובה
-        const responseData = await response.json();
+        const responseData = await response.text();
         console.log('Server response:', responseData);
-
-        // עבד את המידע שהתקבל (למשל, הצגת מפה)
-        processServerResponse(responseData);
+        document.getElementById("map-container").innerHTML = responseData
 
     } catch (error) {
-        // הצג הודעת שגיאה
         errorElement.textContent = `Error: ${error.message}`;
     } finally {
-        // הסתר את הודעת הטעינה
         loadingIndicator.style.display = "none";
     }
 }
 
-// פונקציה לעיבוד המידע מהשרת
 function processServerResponse(data) {
-    // כאן ניתן לעבד את הנתונים שהתקבלו מהשרת (למשל, לטעון מפה או לעדכן גרפים)
     console.log("Processing server data:", data);
 }
